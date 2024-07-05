@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(milliseconds: 3000), () {
       Navigator.pushNamedAndRemoveUntil(
         context,
-        Pages.home,
+        Pages.tasksScreen,
         (route) => false,
       );
     });
@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/app_logo.png',
+              'assets/images/android.png',
               width: 100,
             ),
             const SizedBox(

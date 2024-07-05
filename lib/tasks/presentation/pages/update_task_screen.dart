@@ -202,8 +202,7 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                                   shape: WidgetStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          10), // Adjust the radius as needed
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
                                 ),

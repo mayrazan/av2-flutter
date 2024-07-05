@@ -30,7 +30,6 @@ class AboutScreen extends StatelessWidget {
             'Contato: dev@email.com',
             style: TextStyle(fontSize: 18),
           ),
-          // Adicione mais desenvolvedores conforme necessário
         ],
       ),
     );

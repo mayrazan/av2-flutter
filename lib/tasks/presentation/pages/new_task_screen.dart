@@ -191,8 +191,8 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                                       shape: WidgetStateProperty.all<
                                           RoundedRectangleBorder>(
                                         RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                              10), // Adjust the radius as needed
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                       ),
                                     ),
@@ -226,7 +226,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                                           RoundedRectangleBorder>(
                                         RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
-                                              10), // Adjust the radius as needed
+                                              10),
                                         ),
                                       ),
                                     ),

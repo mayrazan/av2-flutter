@@ -26,6 +26,7 @@ class UpdateTaskScreen extends StatefulWidget {
 class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
   TextEditingController title = TextEditingController();
   TextEditingController description = TextEditingController();
+  TextEditingController detail = TextEditingController();
 
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
@@ -53,6 +54,7 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
   void initState() {
     title.text = widget.taskModel.title;
     description.text = widget.taskModel.description;
+    detail.text = widget.taskModel.detail;
     _selectedDay = _focusedDay;
     _rangeStart = widget.taskModel.startDateTime;
     _rangeEnd = widget.taskModel.stopDateTime;
@@ -170,6 +172,23 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                               fillColor: kWhiteColor,
                               onChange: (value) {}),
                           const SizedBox(height: 20),
+                          buildText(
+                              'Detail',
+                              kBlackColor,
+                              textMedium,
+                              FontWeight.bold,
+                              TextAlign.start,
+                              TextOverflow.clip),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          BuildTextField(
+                              hint: "Task Detail",
+                              controller: detail,
+                              inputType: TextInputType.multiline,
+                              fillColor: kWhiteColor,
+                              onChange: (value) {}),
+                          const SizedBox(height: 20),
                           SizedBox(
                             width: size.width,
                             child: ElevatedButton(
@@ -193,6 +212,7 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                                       id: widget.taskModel.id,
                                       title: title.text,
                                       description: description.text,
+                                      detail: detail.text,
                                       completed: widget.taskModel.completed,
                                       startDateTime: _rangeStart,
                                       stopDateTime: _rangeEnd);

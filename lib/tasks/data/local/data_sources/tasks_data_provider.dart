@@ -115,7 +115,8 @@ class TaskDataProvider {
       final titleMatches = task.title.toLowerCase().contains(searchText);
       final descriptionMatches =
           task.description.toLowerCase().contains(searchText);
-      return titleMatches || descriptionMatches;
+      final detailMatches = task.detail.toLowerCase().contains(searchText);
+      return titleMatches || descriptionMatches || detailMatches;
     }).toList();
   }
 }

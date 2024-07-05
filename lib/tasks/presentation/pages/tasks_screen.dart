@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:imake/components/custom_app_bar.dart';
+import 'package:imake/routes/pages.dart';
 import 'package:imake/tasks/presentation/bloc/tasks_bloc.dart';
 import 'package:imake/components/build_text_field.dart';
 import 'package:imake/tasks/presentation/bloc/tasks_event.dart';
@@ -13,7 +14,6 @@ import 'package:imake/utils/color_palette.dart';
 import 'package:imake/utils/util.dart';
 
 import '../../../components/widgets.dart';
-// import '../../../routes/pages.dart';
 import '../../../utils/font_sizes.dart';
 
 class TasksScreen extends StatefulWidget {
@@ -43,7 +43,7 @@ class _TasksScreenState extends State<TasksScreen> {
             child: Scaffold(
           backgroundColor: kWhiteColor,
           appBar: CustomAppBar(
-            title: '?',
+            title: 'Android',
             showBackArrow: false,
             actionWidgets: [
               PopupMenuButton<int>(
@@ -227,11 +227,13 @@ class _TasksScreenState extends State<TasksScreen> {
                     return Container();
                   }))),
           floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Pages.createNewTask);
+              },
               child: const Icon(
                 Icons.add_circle,
                 color: kPrimaryColor,
-              ),
-              onPressed: null),
+              )),
         )));
   }
 }

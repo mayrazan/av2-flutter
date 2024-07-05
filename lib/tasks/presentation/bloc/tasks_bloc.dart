@@ -7,7 +7,8 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
   final TaskRepository taskRepository;
 
   TasksBloc(this.taskRepository) : super(FetchTasksSuccess(tasks: const [])) {
-    on<AddNewTaskEvent>(_addNewTask as EventHandler<AddNewTaskEvent, TasksState>);
+    on<AddNewTaskEvent>(
+        _addNewTask as EventHandler<AddNewTaskEvent, TasksState>);
     on<FetchTaskEvent>(_fetchTasks);
     on<UpdateTaskEvent>(_updateTask);
     on<DeleteTaskEvent>(_deleteTask);
@@ -23,6 +24,10 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
       }
       if (event.taskModel.description.trim().isEmpty) {
         return emit(AddTaskFailure(error: 'Descrição não pode ser vazia'));
+      }
+      if (event.taskModel.detail == null ||
+          event.taskModel.detail!.trim().isEmpty) {
+        return emit(AddTaskFailure(error: 'Detalhe não pode ser vazio'));
       }
       if (event.taskModel.startDateTime == null) {
         return emit(AddTaskFailure(error: 'Faltou a data de inicio'));
@@ -55,8 +60,10 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
         return emit(UpdateTaskFailure(error: 'Título não pode ser vazio'));
       }
       if (event.taskModel.description.trim().isEmpty) {
-        return emit(
-            UpdateTaskFailure(error: 'Descrição não pode ser vazia'));
+        return emit(UpdateTaskFailure(error: 'Descrição não pode ser vazia'));
+      }
+      if (event.taskModel.detail.trim().isEmpty) {
+        return emit(UpdateTaskFailure(error: 'Detalhe não pode ser vazio'));
       }
       if (event.taskModel.startDateTime == null) {
         return emit(UpdateTaskFailure(error: 'Faltou a data de inicio'));

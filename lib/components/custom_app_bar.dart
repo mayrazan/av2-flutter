@@ -50,3 +50,38 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
+
+class CustomAppBarWithCustomTitle extends CustomAppBar {
+  final IconData? buttonIcon;
+  final VoidCallback? onTitleIconPressed;
+
+  const CustomAppBarWithCustomTitle(
+      {super.key,
+      required String title,
+      bool showBackArrow = false,
+      Color? backgroundColor,
+      List<Widget>? actionWidgets,
+      this.buttonIcon,
+      this.onTitleIconPressed})
+      : super(
+            title: title,
+            showBackArrow: showBackArrow,
+            backgroundColor: backgroundColor,
+            actionWidgets: actionWidgets);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: backgroundColor,
+      automaticallyImplyLeading: false,
+      elevation: 0,
+      actions: actionWidgets,
+      title: TextButton.icon(
+        icon: Icon(buttonIcon),
+        label: buildText(title, kBlackColor, textMedium, FontWeight.w500,
+            TextAlign.start, TextOverflow.clip),
+        onPressed: onTitleIconPressed,
+      ),
+    );
+  }
+}

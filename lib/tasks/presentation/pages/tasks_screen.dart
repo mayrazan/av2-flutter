@@ -42,9 +42,12 @@ class _TasksScreenState extends State<TasksScreen> {
         child: ScaffoldMessenger(
             child: Scaffold(
           backgroundColor: kWhiteColor,
-          appBar: CustomAppBar(
-            title: 'Android',
-            showBackArrow: false,
+          appBar: CustomAppBarWithCustomTitle(
+            title: 'Sobre',
+            buttonIcon: Icons.info,
+            onTitleIconPressed: () {
+              Navigator.pushNamed(context, Pages.about);
+            },
             actionWidgets: [
               PopupMenuButton<int>(
                 shape: RoundedRectangleBorder(

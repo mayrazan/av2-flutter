@@ -7,7 +7,7 @@
 - [x] Corrigir os erros no arquivo tasks_bloc.dart;
 - [x] Trocar o ícone da aplicação para Android;
 - [x] Corrija as rotas para que seja possível acessar a tela de splash. Ela deve ser a primeira tela a abrir;
-- [ ] Adicionar uma tela sobre com informações dos desenvolvedores;
+- [x] Adicionar uma tela sobre com informações dos desenvolvedores;
 - [x] Trocar o nome do app para Android;
 - [x] Implementar a ordenação de tarefas por data.
 

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:imake/components/custom_app_bar.dart';
 import 'package:imake/routes/pages.dart';
+import 'package:imake/tasks/data/repository/token_repository.dart';
 import 'package:imake/tasks/presentation/bloc/tasks_bloc.dart';
 import 'package:imake/components/build_text_field.dart';
 import 'package:imake/tasks/presentation/bloc/tasks_event.dart';
@@ -25,11 +26,19 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
   TextEditingController searchController = TextEditingController();
+  final TokenRepository _repository = TokenRepository();
 
   @override
   void initState() {
     context.read<TasksBloc>().add(FetchTaskEvent());
     super.initState();
+  }
+
+  void _logout() async {
+    await _repository.removeToken();
+    if (mounted) {
+      Navigator.of(context).pushNamed(Pages.login);
+    }
   }
 
   @override
@@ -279,14 +288,37 @@ class _TasksScreenState extends State<TasksScreen> {
                     }
                     return Container();
                   }))),
-          floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Pages.createNewTask);
-              },
-              child: const Icon(
-                Icons.add_circle,
-                color: kPrimaryColor,
-              )),
+          floatingActionButton: Stack(
+            fit: StackFit.expand,
+            children: [
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, Pages.createNewTask);
+                  },
+                  child: const Icon(
+                    Icons.add_circle,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              ),
+              Positioned(
+                right: 0,
+                bottom: 60,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    _logout();
+                  },
+                  backgroundColor: Colors.red,
+                  child: const Icon(
+                    Icons.exit_to_app,
+                  ),
+                ),
+              ),
+            ],
+          ),
         )));
   }
 }

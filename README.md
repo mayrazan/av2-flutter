@@ -2,7 +2,7 @@
 
 **TODO:**
 
-- [ ] Adicionar uma tela de login com e-mail e senha. Não precisa autenticar no banco de dados;
+- [x] Adicionar uma tela de login com e-mail e senha. Não precisa autenticar no banco de dados;
 - [x] Adicionar um atributo chamado detail, na tarefa, do tipo String;
 - [x] Corrigir os erros no arquivo tasks_bloc.dart;
 - [x] Trocar o ícone da aplicação para Android;

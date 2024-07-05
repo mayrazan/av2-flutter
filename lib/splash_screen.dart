@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imake/tasks/data/repository/token_repository.dart';
 import 'components/widgets.dart';
 import 'routes/pages.dart';
 import 'utils/color_palette.dart';
@@ -12,6 +13,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final TokenRepository _tokenRepository = TokenRepository();
+
   @override
   void initState() {
     startTimer();
@@ -19,13 +22,23 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   startTimer() async {
-    Future.delayed(const Duration(milliseconds: 3000), () {
+    await Future.delayed(const Duration(milliseconds: 3000));
+    final hasToken = await _tokenRepository.hasToken();
+    
+    if (!mounted) return;
+    if (hasToken) {
       Navigator.pushNamedAndRemoveUntil(
         context,
         Pages.tasksScreen,
         (route) => false,
       );
-    });
+    } else {
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        Pages.login,
+        (route) => false,
+      );
+    }
   }
 
   @override

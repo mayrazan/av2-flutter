@@ -9,7 +9,7 @@
 - [x] Corrija as rotas para que seja possível acessar a tela de splash. Ela deve ser a primeira tela a abrir;
 - [ ] Adicionar uma tela sobre com informações dos desenvolvedores;
 - [x] Trocar o nome do app para Android;
-- [ ] Implementar a ordenação de tarefas por data.
+- [x] Implementar a ordenação de tarefas por data.
 
 ## Installation
 

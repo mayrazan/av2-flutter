@@ -4,6 +4,6 @@ class Pages {
   static const createNewTask = '/createNewTask';
   static const updateTask = '/updateNewTask';
   static const tasksScreen = '/tasks';
-  static const taskDetails = '/taskDetails';
   static const about = '/about';
+  static const login = '/login';
 }

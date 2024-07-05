@@ -59,6 +59,28 @@ class TaskDataProvider {
           }
         });
         break;
+      case 2:
+        // Sort by start date ascending, then by stop date ascending
+        tasks.sort((a, b) {
+          int startComparison = a.startDateTime!.compareTo(b.startDateTime!);
+          if (startComparison != 0) {
+            return startComparison;
+          }
+          // If start dates are equal, compare stop dates
+          return a.stopDateTime!.compareTo(b.stopDateTime!);
+        });
+        break;
+      case 3:
+        // Sort by start date descending, then by stop date descending
+        tasks.sort((a, b) {
+          int startComparison = b.startDateTime!.compareTo(a.startDateTime!);
+          if (startComparison != 0) {
+            return startComparison;
+          }
+          // If start dates are equal, compare stop dates
+          return b.stopDateTime!.compareTo(a.stopDateTime!);
+        });
+        break;
     }
     return tasks;
   }

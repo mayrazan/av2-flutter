@@ -57,14 +57,28 @@ class _TasksScreenState extends State<TasksScreen> {
                       {
                         context
                             .read<TasksBloc>()
-                            .add(SortTaskEvent(sortOption: 1));
+                            .add(SortTaskEvent(sortOption: 0));
                         break;
                       }
                     case 1:
                       {
                         context
                             .read<TasksBloc>()
+                            .add(SortTaskEvent(sortOption: 1));
+                        break;
+                      }
+                    case 2: // New case for sorting by date ascending
+                      {
+                        context
+                            .read<TasksBloc>()
                             .add(SortTaskEvent(sortOption: 2));
+                        break;
+                      }
+                    case 3: // New case for sorting by date descending
+                      {
+                        context
+                            .read<TasksBloc>()
+                            .add(SortTaskEvent(sortOption: 3));
                         break;
                       }
                   }
@@ -72,7 +86,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 itemBuilder: (BuildContext context) {
                   return [
                     PopupMenuItem<int>(
-                      value: 1,
+                      value: 0,
                       child: Row(
                         children: [
                           SvgPicture.asset(
@@ -93,7 +107,7 @@ class _TasksScreenState extends State<TasksScreen> {
                       ),
                     ),
                     PopupMenuItem<int>(
-                      value: 2,
+                      value: 1,
                       child: Row(
                         children: [
                           SvgPicture.asset(
@@ -105,6 +119,42 @@ class _TasksScreenState extends State<TasksScreen> {
                           ),
                           buildText(
                               'Pendentes',
+                              kBlackColor,
+                              textSmall,
+                              FontWeight.normal,
+                              TextAlign.start,
+                              TextOverflow.clip)
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem<int>(
+                      value: 2,
+                      child: Row(
+                        children: [
+                          const Icon(Icons.arrow_upward, size: 15),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          buildText(
+                              'Data Ascendente',
+                              kBlackColor,
+                              textSmall,
+                              FontWeight.normal,
+                              TextAlign.start,
+                              TextOverflow.clip)
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem<int>(
+                      value: 3,
+                      child: Row(
+                        children: [
+                          const Icon(Icons.arrow_downward, size: 15),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          buildText(
+                              'Data Descendente',
                               kBlackColor,
                               textSmall,
                               FontWeight.normal,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:imake/tasks/presentation/bloc/tasks_event.dart';
+import 'package:imake/tasks/presentation/bloc/tasks_state.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:imake/components/widgets.dart';
 import 'package:imake/tasks/data/local/model/task_model.dart';
@@ -173,12 +175,12 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                             child: ElevatedButton(
                                 style: ButtonStyle(
                                   foregroundColor:
-                                      MaterialStateProperty.all<Color>(
+                                      WidgetStateProperty.all<Color>(
                                           Colors.white),
                                   backgroundColor:
-                                      MaterialStateProperty.all<Color>(
+                                      WidgetStateProperty.all<Color>(
                                           kPrimaryColor),
-                                  shape: MaterialStateProperty.all<
+                                  shape: WidgetStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(

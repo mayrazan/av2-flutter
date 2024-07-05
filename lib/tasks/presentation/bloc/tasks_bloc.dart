@@ -1,14 +1,13 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../data/local/model/task_model.dart';
-import '../../data/repository/task_repository.dart';
+import 'package:imake/tasks/data/repository/task_repository.dart';
+import 'package:imake/tasks/presentation/bloc/tasks_event.dart';
+import 'package:imake/tasks/presentation/bloc/tasks_state.dart';
 
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
   final TaskRepository taskRepository;
 
   TasksBloc(this.taskRepository) : super(FetchTasksSuccess(tasks: const [])) {
-    on<AddNewTaskEvent>(_addNewTask);
+    on<AddNewTaskEvent>(_addNewTask as EventHandler<AddNewTaskEvent, TasksState>);
     on<FetchTaskEvent>(_fetchTasks);
     on<UpdateTaskEvent>(_updateTask);
     on<DeleteTaskEvent>(_deleteTask);
@@ -16,7 +15,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     on<SearchTaskEvent>(_searchTasks);
   }
 
-  _addNewTask(? event, Emitter<TasksState> emit) async {
+  _addNewTask(event, Emitter<TasksState> emit) async {
     emit(TasksLoading());
     try {
       if (event.taskModel.title.trim().isEmpty) {
